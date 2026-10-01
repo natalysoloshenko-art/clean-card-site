@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Card - Экологичные моющие средства</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Nunito', sans-serif; 
+            color: #2c3e2d; 
+            background: #f8fdf8;
+            line-height: 1.6; 
+        }
+        
+        /* Шапка */
+        header { 
+            background: white;
+            padding: 20px 60px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(46, 125, 50, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { 
+            font-size: 1.8em; 
+            font-weight: 700; 
+            color: #2E7D32;
+            letter-spacing: 2px; 
+        }
+        .logo::before {
+            content: "🌿 ";
+        }
+        nav a { 
+            color: #2c3e2d; 
+            text-decoration: none; 
+            margin-left: 35px; 
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #4CAF50; }
+        
+        /* Hero */
+        .hero { 
+            padding: 100px 60px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .hero h1 { 
+            font-size: 3.5em; 
+            font-weight: 700; 
+            line-height: 1.2; 
+            color: #1B5E20;
+            margin-bottom: 25px;
+        }
+        .hero p { 
+            font-size: 1.3em; 
+            color: #2E7D32; 
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-size: 1.05em;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        .cta-button:hover { 
+            background: #2E7D32;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        /* Преимущества */
+        .benefits { 
+            padding: 80px 60px; 
+        }
+        .benefits h2 { 
+            font-size: 2.5em; 
+            font-weight: 700; 
+            max-width: 1200px; 
+            margin: 0 auto 60px;
+            text-align: center;
+            color: #1B5E20;
+        }
+        .benefits-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .benefit-card { 
+            background: white;
+            padding: 40px 30px; 
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(46, 125, 50, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+        }
+        .benefit-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .benefit-card h3 { 
+            font-size: 1.2em; 
+            margin-bottom: 15px; 
+            color: #1B5E20;
+            font-weight: 700;
+        }
+        .benefit-card p { 
+            color: #5a6b5c; 
+            font-size: 0.95em;
+            font-weight: 400;
+        }
+        
+        /* Доверие */
+        .trust { 
+            padding: 80px 60px; 
+            background: white;
+        }
+        .trust-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .trust h2 { 
+            font-size: 2.5em; 
+            font-weight: 700; 
+            margin-bottom: 25px;
+            color: #1B5E20;
+        }
+        .trust-text { 
+            font-size: 1.15em; 
+            color: #5a6b5c; 
+            line-height: 1.8; 
+            margin-bottom: 60px; 
+            max-width: 800px;
+        }
+        .trust-stats { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 30px; 
+        }
+        .stat { 
+            text-align: center; 
+            padding: 35px 20px; 
+            background: #E8F5E9;
+            border-radius: 20px;
+        }
+        .stat-number { 
+            font-size: 2.8em; 
+            color: #2E7D32; 
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .stat-label { 
+            color: #5a6b5c; 
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        /* CTA */
+        .cta-section { 
+            padding: 80px 60px; 
+            background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);
+            text-align: center; 
+            border-radius: 30px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        .cta-section h2 { 
+            font-size: 2.5em; 
+            font-weight: 700; 
+            margin-bottom: 20px;
+            color: #1B5E20;
+        }
+        .cta-section p { 
+            font-size: 1.2em; 
+            color: #2E7D32;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        .cta-form { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .cta-form input, .cta-form textarea { 
+            padding: 18px 25px; 
+            background: white;
+            border: 2px solid #C8E6C9;
+            border-radius: 50px;
+            color: #2c3e2d;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .cta-form input:focus, .cta-form textarea:focus {
+            border-color: #4CAF50;
+        }
+        .cta-form input::placeholder, .cta-form textarea::placeholder {
+            color: #8a9a8c;
+        }
+        .cta-form textarea {
+            border-radius: 20px;
+        }
+        .cta-form button { 
+            padding: 18px; 
+            background: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        .cta-form button:hover {
+            background: #2E7D32;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        /* Футер */
+        footer { 
+            background: #1B5E20; 
+            color: white;
+            padding: 60px 60px 30px; 
+        }
+        .footer-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+        }
+        .footer-logo { 
+            font-size: 2.2em; 
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px; 
+        }
+        .footer-logo::before {
+            content: "🌿 ";
+        }
+        .footer-info h4 { 
+            margin-bottom: 20px; 
+            font-size: 1em; 
+            font-weight: 700;
+            color: #A5D6A7;
+        }
+        .footer-info p { 
+            margin-bottom: 12px; 
+            color: #C8E6C9;
+            font-weight: 400;
+        }
+        .footer-bottom { 
+            max-width: 1200px; 
+            margin: 40px auto 0; 
+            padding-top: 25px; 
+            border-top: 1px solid rgba(165, 214, 167, 0.3); 
+            text-align: center; 
+            color: #A5D6A7; 
+            font-size: 0.9em; 
+        }.products {
+    padding: 80px 60px;
+    background: white;
+}
+.products h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-align: center;
+    color: #1B5E20;
+    margin-bottom: 15px;
+}
+.products-subtitle {
+    text-align: center;
+    color: #5a6b5c;
+    font-size: 1.1em;
+    margin-bottom: 50px;
+}
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.product-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(46, 125, 50, 0.1);
+    text-align: center;
+    transition: all 0.3s;
+}
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 35px rgba(46, 125, 50, 0.2);
+}
+.product-img {
+    width: 100%;
+    max-width: 220px;
+    height: 280px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+.product-card h3 {
+    font-size: 1.2em;
+    color: #1B5E20;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.product-card p {
+    color: #5a6b5c;
+    font-size: 0.95em;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CLEAN CARD</div>
+        <nav>
+            <a href="#benefits">Преимущества</a>
+            <a href="#trust">О нас</a>
+            <a href="#cta">Контакты</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Экологичные моющие и дезинфицирующие средства</h1>
+        <p>Безопасные решения для чистоты и санитарии. Забота о природе и вашем бизнесе</p>
+        <a href="#cta" class="cta-button">Получить консультацию</a>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <h2>Почему выбирают Clean Card</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🌱</div>
+                <h3>Экологичный состав</h3>
+                <p>Биоразлагаемые формулы, безопасные для природы и человека</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🏭</div>
+                <h3>Собственное производство</h3>
+                <p>Полный контроль качества на каждом этапе создания продукции</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">✅</div>
+                <h3>Сертифицировано</h3>
+                <p>ISO 9001 и соответствие всем санитарным нормам РФ</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3>Поддержка 24/7</h3>
+                <p>Обучение персонала и техническое сопровождение</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust" id="trust">
+        <div class="trust-content">
+            <h2>О компании Clean Card</h2>
+            <p class="trust-text">Российский производитель экологичных моющих и дезинфицирующих средств. Мы создаём безопасные решения для предприятий пищевой промышленности, общественного питания, медицины и промышленности. Наша миссия — чистота без вреда для природы.</p>
+            <div class="trust-stats">
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">лет опыта</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">клиентов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">ISO</div>
+                    <div class="stat-label">9001 сертификат</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">продуктов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="products">
+    <h2>Наша продукция</h2>
+    <p class="products-subtitle">Профессиональные моющие и дезинфицирующие средства</p>
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="images/визитка4.png" alt="Моющие средства" class="product-img">
+            <h3>Моющие средства</h3>
+            <p>Для профессиональной уборки</p>
+        </div>
+        <div class="product-card">
+            <img src="images/визитка6.png" alt="Дезинфицирующие средства" class="product-img">
+            <h3>Дезинфицирующие средства</h3>
+            <p>Эффективная защита</p>
+        </div>
+        <div class="product-card">
+            <img src="images/визитка7.png" alt="Универсальные средства" class="product-img">
+            <h3>Универсальные средства</h3>
+            <p>Для любых поверхностей</p>
+        </div>
+    </div>
+</section>
+<section class="cta-section" id="cta">
+        <h2>Готовы к экологичному решению?</h2>
+        <p>Оставьте заявку и получите бесплатную консультацию</p>
+        <form class="cta-form">
+            <input type="text" placeholder="Ваше имя">
+            <input type="tel" placeholder="Телефон">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Комментарий" rows="4"></textarea>
+            <button type="submit">Отправить заявку</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">CLEAN CARD</div>
+                <p>Экологичные моющие и дезинфицирующие средства</p>
+            </div>
+            <div class="footer-info">
+                <h4>Контакты</h4>
+                <p>📞 8 (800) 555-35-35</p>
+                <p>️ info@cleancard.ru</p>
+                <p>📍 Москва, ул. Примерная, д. 1</p>
+                <p>🕐 Пн-Пт 9:00-18:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Clean Card. Все права защищены.</div>
+    </footer>
+    </body>
+</html>
+
